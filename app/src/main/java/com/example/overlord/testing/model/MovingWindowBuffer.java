@@ -19,6 +19,9 @@ public class MovingWindowBuffer <T> {
     private boolean has_been_full_once = false;
     private Consumer<ArrayList<T>> dataBufferConsumer;
 
+    public Deque<T> getDataBuffer() {
+        return dataBuffer;
+    }
 
     public MovingWindowBuffer(int size) {
         this.size = size;

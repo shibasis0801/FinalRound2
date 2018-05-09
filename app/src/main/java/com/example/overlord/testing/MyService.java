@@ -3,11 +3,13 @@ package com.example.overlord.testing;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
 
 
 import com.example.overlord.testing.immutable.AccelerometerSensor;
+import com.example.overlord.testing.immutable.CollectionUtils;
 import com.example.overlord.testing.immutable.Consumer;
 import com.example.overlord.testing.immutable.TimeUtils;
 import com.example.overlord.testing.model.AccelerometerBuffer;
@@ -170,9 +172,21 @@ public class MyService extends Service {
     public MyService() {
     }
 
+    public class LocalBinder extends Binder {
+        public MyService getService() {
+            return MyService.this;
+        }
+    }
+
+    private final IBinder iBinder = new LocalBinder();
+
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
-        throw new UnsupportedOperationException("Not yet implemented");
+        return iBinder;
     }
+
+    public ArrayList<Fused> getCurrentSignals() {
+        return CollectionUtils.dequeToList(windowBuffer.getDataBuffer());
+    }
+
 }
