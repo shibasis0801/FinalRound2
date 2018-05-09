@@ -6,19 +6,167 @@
     android:layout_height="match_parent"
     tools:context="com.example.overlord.testing.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        android:id="@+id/textView" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_heart"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/button_fetch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="176dp"
-        android:text="Fetch" />
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dip"
+                        android:id="@+id/graph_heart" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="HeartRate"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorPrimaryDark"
+                        />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
 
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_X"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dip"
+                        android:id="@+id/graph_X" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acceleration in X Axis"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorPrimaryDark"
+                        />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_Y"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dip"
+                        android:id="@+id/graph_Y" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acceleration in Y Axis"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorPrimaryDark"
+                        />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_Z"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.jjoe64.graphview.GraphView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dip"
+                        android:id="@+id/graph_Z" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Acceleration in Z Axis"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorPrimaryDark"
+                        />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/card_view_stats"
+                android:layout_margin="4dp"
+                android:padding="2dp"
+                android:layout_gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                card_view:cardCornerRadius="4dp">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_avg_heartbeat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Average Heart Beat"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:shadowColor="@color/colorPrimaryDark"
+                        />
+
+                    <TextView
+                        android:id="@+id/text_stressed_or_not"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Stressed or Not"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        />
+                </LinearLayout>
+            </android.support.v7.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

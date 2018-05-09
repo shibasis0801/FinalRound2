@@ -104,8 +104,13 @@ public class MyService extends Service {
         return data.getTime().format("dd_MM_yyyy_HH_mm_ss");
     }
 
-    public <T> void storeHeartBeat(String time, ArrayList<T> heartBeats) {
+    private Consumer<ArrayList<Fused>> onNewSignalsListener;
+    public void storeHeartBeat(String time, ArrayList<Fused> heartBeats) {
         Log.i("StoreHeartBeatAt", time);
+
+        if(onNewSignalsListener != null)
+            onNewSignalsListener.accept(heartBeats);
+
         global.heartRef
                 .child(time)
                 .setValue(heartBeats)
@@ -140,8 +145,6 @@ public class MyService extends Service {
     public void onCreate() {
         super.onCreate();
         connector = new HardwareConnector(this, listener);
-        startDiscovery(this::addBeat);
-
 
         windowBuffer = new MovingWindowBuffer<>(60);
         accelerometerBuffer = new AccelerometerBuffer();
@@ -160,6 +163,8 @@ public class MyService extends Service {
                     );
                 }
         );
+
+        startDiscovery(this::addBeat);
 
     }
 
@@ -185,8 +190,7 @@ public class MyService extends Service {
         return iBinder;
     }
 
-    public ArrayList<Fused> getCurrentSignals() {
-        return CollectionUtils.dequeToList(windowBuffer.getDataBuffer());
+    public void setOnNewSignalsListener(Consumer<ArrayList<Fused>> onNewSignalsListener) {
+        this.onNewSignalsListener = onNewSignalsListener;
     }
-
 }
