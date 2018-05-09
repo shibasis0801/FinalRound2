@@ -138,14 +138,14 @@ public class MyService extends Service {
     public void onCreate() {
         super.onCreate();
         connector = new HardwareConnector(this, listener);
-        startDiscovery(heartBeat -> Log.d("", heartBeat.toString()));
+        startDiscovery(this::addBeat);
 
 
         windowBuffer = new MovingWindowBuffer<>(60);
         accelerometerBuffer = new AccelerometerBuffer();
 
         accelerometerSensor = new AccelerometerSensor(this);
-/*
+
         accelerometerSensor.registerListener(
                 sensorValues -> {
 
@@ -158,8 +158,6 @@ public class MyService extends Service {
                     );
                 }
         );
-*/
-
 
     }
 
